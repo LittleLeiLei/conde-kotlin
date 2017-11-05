@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">cnode</string>
+
+    <string name="tab_topic">话题</string>
+    <string name="tab_personal">我的</string>
+
+    <string name="entry_topic">我的主题</string>
+    <string name="entry_collection">我的收藏</string>
+    <string name="entry_message">我的消息</string>
+    <string name="entry_setting">设置</string>
+    <string name="entry_helping">帮助与反馈</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_toolbar_title">18sp</dimen>
+    <dimen name="text_size_tiny">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_middle">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+
+    <dimen name="corner_radius">3dp</dimen>
+    <dimen name="divider_height">1px</dimen>
+    <dimen name="elevation">2dp</dimen>
+    <dimen name="status_bar_height">24dp</dimen>
+    <dimen name="avatar">80dp</dimen>
+
+    <dimen name="padding_tiny">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_middle">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_middle">12dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+
+    <dimen name="icon_tiny">12dp</dimen>
+    <dimen name="icon_small">16dp</dimen>
+    <dimen name="icon_middle">20dp</dimen>
+    <dimen name="icon_large">24dp</dimen>
+</resources>
