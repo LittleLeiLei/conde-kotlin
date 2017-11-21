@@ -1,6 +1,7 @@
 package com.coyoal.zsc.cnode.http
 
 import com.coyoal.zsc.cnode.entity.BaseResponse
+import com.orhanobut.logger.Logger
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
@@ -24,6 +25,7 @@ abstract class SimpleObserver<T> : Observer<BaseResponse<T>> {
         if (t.isSuccess) {
             onSuccess(t.data as T)
         } else {
+            Logger.e(t.message)
             onFailure(t.message)
         }
     }

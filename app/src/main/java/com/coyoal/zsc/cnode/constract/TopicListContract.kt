@@ -9,13 +9,13 @@ import com.coyoal.zsc.cnode.presenter.BasePresenter
  *
  * Created by Administrator on 2017/11/5.
  */
-class TopicListConstract {
+class TopicListContract {
     interface View {
         fun setTopics(topics: List<Topic>)
     }
 
     interface Model {
-        fun getTopics(@NonNull tab: String, @NonNull limit: Int, @NonNull page: Int, observer: SimpleObserver<List<Topic>>)
+        fun getTopics(@NonNull tab: String, @NonNull page: Int, @NonNull limit: Int, observer: SimpleObserver<List<Topic>>)
     }
 
     abstract class Presenter<V>: BasePresenter<V>() {

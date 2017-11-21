@@ -11,68 +11,197 @@
         android:layout_height="wrap_content"
         app:elevation="0dp">
 
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="@dimen/icon_middle"
-                    android:layout_height="@dimen/icon_middle"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_arrow_back"
-                    android:tint="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/margin_middle"
-                    android:layout_toRightOf="@id/iv_back"
-                    android:ellipsize="marquee"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:maxWidth="240dp"
-                    android:singleLine="true"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_size_toolbar_title" />
-
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
-
-        <RelativeLayout
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white">
+            app:statusBarScrim="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <com.chao.coyoal.cnode.ui.custom.CircleImageView
-                android:id="@+id/civ_avatar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="@dimen/margin_middle"
-                android:src="@android:color/holo_blue_bright" />
-
-            <TextView
-                android:id="@+id/tv_author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/civ_avatar" />
-
-            <View
+            <RelativeLayout
+                android:id="@+id/rl_info"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_below="@id/civ_avatar"
-                android:background="#ddd" />
+                android:layout_height="250dp">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@android:color/holo_blue_bright"
+                    android:layout_margin="@dimen/margin_large"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tv_title_expand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/iv_avatar"
+                    android:layout_toRightOf="@id/iv_avatar"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_middle"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_personal"
+                    android:layout_width="@dimen/icon_middle"
+                    android:layout_height="@dimen/icon_middle"
+                    android:tint="@android:color/white"
+                    android:layout_below="@id/tv_title_expand"
+                    android:layout_toRightOf="@id/iv_avatar"
+                    android:layout_marginTop="@dimen/margin_middle"
+                    android:src="@mipmap/ic_personal" />
+
+                <TextView
+                    android:id="@+id/tv_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_title_expand"
+                    android:layout_toRightOf="@id/iv_personal"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_middle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_middle"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_large"
+                            android:layout_height="@dimen/icon_large"
+                            android:src="@mipmap/ic_collect"
+                            android:tint="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_collect_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_middle"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_large"
+                            android:layout_height="@dimen/icon_large"
+                            android:src="@mipmap/ic_message"
+                            android:tint="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_comment_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_middle"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_large"
+                            android:layout_height="@dimen/icon_large"
+                            android:src="@mipmap/ic_read"
+                            android:tint="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_read_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_middle"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_large"
+                            android:layout_height="@dimen/icon_large"
+                            android:src="@mipmap/ic_share"
+                            android:tint="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_share_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="@dimen/margin_tiny" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:layout_collapseMode="pin">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="@dimen/icon_middle"
+                        android:layout_height="@dimen/icon_middle"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_arrow_back"
+                        android:tint="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_middle"
+                        android:layout_toRightOf="@id/iv_back"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:maxWidth="240dp"
+                        android:singleLine="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_size_toolbar_title" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
 
     </android.support.design.widget.AppBarLayout>
@@ -88,7 +217,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/tv_topic_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/padding_middle"

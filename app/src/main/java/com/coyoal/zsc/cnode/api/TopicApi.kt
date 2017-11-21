@@ -15,6 +15,6 @@ interface TopicApi {
     @GET("topics")
     fun getArticleList(@QueryMap params: Map<String, String>): Observable<BaseResponse<List<Topic>>>
 
-    @GET("topic/{id}")
-    fun getTopicDetail(@Path("id") topicId: String): Observable<BaseResponse<Topic>>
+    @GET("topic/{topicId}")
+    fun getTopicDetail(@Path("topicId") topicId: String): Observable<BaseResponse<Topic>>
 }
