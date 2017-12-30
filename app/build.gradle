@@ -9,16 +9,55 @@ android {
         applicationId "com.coyoal.zsc.cnode_kotlin"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+        flavorDimensions "versionCode"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            storeFile file(KEYSTORE_LOCATION)
+            keyAlias KEYSTORE_ALIAS
+            keyPassword KEYSTORE_PWD
+            storePassword KEYSTORE_PWD
         }
     }
+
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //启用混淆代码的功能
+            minifyEnabled true
+            //压缩对齐生成的apk包
+            zipAlignEnabled true
+            //指定混淆规则，需要压缩优化的混淆要把proguard-android.txt换成proguard-android.txt
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources true
+            signingConfig signingConfigs.release //打包命令行：gradlew assembleRelease
+        }
+    }
+    productFlavors {
+        _91 {}
+        wandoujia {}
+        xiaomi {}
+        _360shoufa{}
+        anzhi{}
+        baidushoufa{}
+        huaweishoufa{}
+    }
+    productFlavors.all {
+        flavor ->
+            def channel = name.startsWith("_") ? name.substring(1) : name
+            flavor.manifestPlaceholders = [MTA_CHANNEL_VALUE: channel]
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "driver_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
+        }
+    }
+    // apply from: 'productFlavors.gradle'
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
@@ -26,6 +65,10 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 }
 
 dependencies {
