@@ -1559,18 +1559,18 @@ object TimeUtils {
     }
 
     private fun millis2FitTimeSpan(millis: Long, precision: Int): String? {
-        var millis = millis
-        var precision = precision
-        if (millis < 0 || precision <= 0) return null
-        precision = Math.min(precision, 5)
+        var mMillis = millis
+        var mPrecision = precision
+        if (millis < 0 || mPrecision <= 0) return null
+        mPrecision = Math.min(mPrecision, 5)
         val units = arrayOf("天", "小时", "分钟", "秒", "毫秒")
-        if (millis == 0L) return 0.toString() + units[precision - 1]
+        if (millis == 0L) return 0.toString() + units[mPrecision - 1]
         val sb = StringBuilder()
         val unitLen = intArrayOf(86400000, 3600000, 60000, 1000, 1)
-        for (i in 0 until precision) {
+        for (i in 0 until mPrecision) {
             if (millis >= unitLen[i]) {
                 val mode = millis / unitLen[i]
-                millis -= mode * unitLen[i]
+                mMillis -= mode * unitLen[i]
                 sb.append(mode).append(units[i])
             }
         }

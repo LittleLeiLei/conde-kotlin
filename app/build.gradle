@@ -28,12 +28,12 @@ android {
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
             //启用混淆代码的功能
-            minifyEnabled true
+            minifyEnabled false
             //压缩对齐生成的apk包
             zipAlignEnabled true
             //指定混淆规则，需要压缩优化的混淆要把proguard-android.txt换成proguard-android.txt
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            shrinkResources true
+            // shrinkResources true
             signingConfig signingConfigs.release //打包命令行：gradlew assembleRelease
         }
     }

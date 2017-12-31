@@ -22,7 +22,7 @@ abstract class BaseListFragment<T, V, P: BasePresenter<V>>: BaseFragment<V, P>()
     override fun initViews(view: View?) {
         view!!.rv_data.layoutManager = LinearLayoutManager(activity)
         initAdapter()
-        view!!.rv_data.adapter = mAdapter
+        view.rv_data.adapter = mAdapter
     }
 
     override fun initEvents() {
