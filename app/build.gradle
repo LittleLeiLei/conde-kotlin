@@ -38,10 +38,8 @@ android {
         }
     }
     productFlavors {
-        _91 {}
         wandoujia {}
         xiaomi {}
-        _360shoufa{}
         anzhi{}
         baidushoufa{}
         huaweishoufa{}
@@ -49,12 +47,12 @@ android {
     productFlavors.all {
         flavor ->
             def channel = name.startsWith("_") ? name.substring(1) : name
-            flavor.manifestPlaceholders = [MTA_CHANNEL_VALUE: channel]
+            flavor.manifestPlaceholders = [channelName: channel]
     }
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            outputFileName = "driver_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
+            outputFileName = "${variant.productFlavors[0].name}_v${variant.versionName}_${releaseTime()}.apk"
         }
     }
     // apply from: 'productFlavors.gradle'
