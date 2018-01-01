@@ -47,7 +47,7 @@ android {
         }
     }
 
-    if (isJenkins) {
+    if (IS_JENKINS) {
         productFlavors {}
         def flavors = PRODUCT_FLAVORS.split(",")
         flavors.each {
