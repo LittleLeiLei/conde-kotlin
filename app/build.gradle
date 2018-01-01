@@ -15,11 +15,20 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        release {
-            storeFile file(KEYSTORE_LOCATION)
-            keyAlias KEYSTORE_ALIAS
-            keyPassword KEYSTORE_PWD
-            storePassword KEYSTORE_PWD
+        if (IS_JENKINS) {
+            release {
+                storeFile file(KEYSTORE_LOCATION)
+                keyAlias KEYSTORE_ALIAS
+                keyPassword KEYSTORE_PWD
+                storePassword KEYSTORE_PWD
+            }
+        } else {
+            release {
+                storeFile file("test.jks")
+                keyAlias test
+                keyPassword "android"
+                storePassword "android"
+            }
         }
     }
 
@@ -37,13 +46,23 @@ android {
             signingConfig signingConfigs.release //打包命令行：gradlew assembleRelease
         }
     }
-    productFlavors {
-        wandoujia {}
-        xiaomi {}
-        anzhi{}
-        baidushoufa{}
-        huaweishoufa{}
+
+    if (isJenkins) {
+        productFlavors {}
+        def flavors = PRODUCT_FLAVORS.split(",")
+        flavors.each {
+            productFlavors.create(it, {})
+        }
+    } else {
+        productFlavors {
+            wandoujia {}
+            xiaomi {}
+            anzhi {}
+            baidushoufa {}
+            huaweishoufa {}
+        }
     }
+
     productFlavors.all {
         flavor ->
             def channel = name.startsWith("_") ? name.substring(1) : name
@@ -55,7 +74,7 @@ android {
             outputFileName = "${variant.productFlavors[0].name}_v${variant.versionName}_${releaseTime()}.apk"
         }
     }
-    // apply from: 'productFlavors.gradle'
+
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
