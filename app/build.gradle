@@ -15,20 +15,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        if (IS_JENKINS) {
-            release {
-                storeFile file(KEYSTORE_LOCATION)
-                keyAlias KEYSTORE_ALIAS
-                keyPassword KEYSTORE_PWD
-                storePassword KEYSTORE_PWD
-            }
-        } else {
-            release {
-                storeFile file("test.jks")
-                keyAlias test
-                keyPassword "android"
-                storePassword "android"
-            }
+        release {
+            storeFile file(KEYSTORE_LOCATION)
+            keyAlias KEYSTORE_ALIAS
+            keyPassword KEYSTORE_PWD
+            storePassword KEYSTORE_PWD
         }
     }
 
@@ -47,20 +38,10 @@ android {
         }
     }
 
-    if (IS_JENKINS) {
-        productFlavors {}
-        def flavors = PRODUCT_FLAVORS.split(",")
-        flavors.each {
-            productFlavors.create(it, {})
-        }
-    } else {
-        productFlavors {
-            wandoujia {}
-            xiaomi {}
-            anzhi {}
-            baidushoufa {}
-            huaweishoufa {}
-        }
+    productFlavors {}
+    def flavors = PRODUCT_FLAVORS.split(",")
+    flavors.each {
+        productFlavors.create(it, {})
     }
 
     productFlavors.all {
