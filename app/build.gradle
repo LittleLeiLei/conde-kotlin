@@ -67,8 +67,7 @@ android {
 }
 
 packer {
-    archiveNameFormat = '${buildType}-v${versionName}-${channel}'
-    archiveOutput = new File(project.rootProject.buildDir, "apks")
+    archiveNameFormat = 'cnode_${buildType}_v${versionName}_${channel}'
     channelList = PRODUCT_FLAVORS.split(",")
 }
 
