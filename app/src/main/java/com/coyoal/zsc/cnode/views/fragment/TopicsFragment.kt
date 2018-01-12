@@ -21,7 +21,8 @@ class TopicsFragment: BaseListFragment<Topic, TopicListContract.View, TopicListP
     }
 
     override fun initData() {
-        mPresenter?.loadTopics("share", 1, 10)
+        val tab = arguments?.getString("tab_key") as String
+        mPresenter?.loadTopics(tab, 1, 10)
     }
 
     override fun initPresenter(): TopicListPresenter {

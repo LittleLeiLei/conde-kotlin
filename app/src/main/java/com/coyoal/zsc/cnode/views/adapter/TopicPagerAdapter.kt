@@ -1,5 +1,6 @@
 package com.coyoal.zsc.cnode.views.adapter
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
@@ -15,8 +16,11 @@ class TopicPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
     private val fragments = ArrayList<Fragment>()
 
     init {
-        for (i in titles.indices) {
+        for (tab in arrayOf("good", "share", "ask", "job")) {
             val f = TopicsFragment()
+            val bundle = Bundle()
+            bundle.putString("tab_key", tab)
+            f.arguments = bundle
             fragments.add(f)
         }
     }

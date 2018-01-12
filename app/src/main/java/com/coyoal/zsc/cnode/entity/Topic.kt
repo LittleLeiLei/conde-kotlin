@@ -22,5 +22,5 @@ class Topic {
     var visit_count: Int = 0
     var create_at: String = ""
     var author: User? = null
-    var replies: List<Comment> = ArrayList<Comment>()
+    var replies: List<Comment> = ArrayList()
 }

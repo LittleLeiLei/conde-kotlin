@@ -13,12 +13,12 @@ import android.view.ViewGroup
  */
 abstract class BaseRecyclerAdapter<T>: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var data: List<T> = ArrayList<T>()
+    var data: List<T> = ArrayList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-    private var mListener: OnItemClickListener<T>? = null
+    private lateinit var mListener: OnItemClickListener<T>
 
     override fun getItemCount(): Int {
         return data.size
@@ -27,7 +27,7 @@ abstract class BaseRecyclerAdapter<T>: RecyclerView.Adapter<RecyclerView.ViewHol
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         bindView(holder, data[position], position)
         holder!!.itemView.setOnClickListener {
-            view -> mListener?.onItemClick(view, data[position], position)
+            view -> mListener.onItemClick(view, data[position], position)
         }
     }
 
@@ -49,11 +49,11 @@ abstract class BaseRecyclerAdapter<T>: RecyclerView.Adapter<RecyclerView.ViewHol
      */
     protected abstract fun bindView(holder: RecyclerView.ViewHolder?, bean: T, pos: Int)
 
-    fun setOnItemClickListener(@NonNull listener: OnItemClickListener<T>) {
+    fun setOnItemClickListener(listener: OnItemClickListener<T>) {
         mListener = listener
     }
 
-    interface OnItemClickListener<T> {
+    interface OnItemClickListener<in T> {
         fun onItemClick(view: View, bean: T, pos: Int)
     }
 }

@@ -22,13 +22,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
 
-                <ImageView
+                <com.coyoal.zsc.cnode.views.custom.CircleImageView
                     android:id="@+id/iv_avatar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@android:color/holo_blue_bright"
                     android:layout_margin="@dimen/margin_large"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="1dp"/>
 
                 <TextView
                     android:id="@+id/tv_title_expand"

@@ -8,7 +8,7 @@
 
     <dimen name="corner_radius">3dp</dimen>
     <dimen name="divider_height">1px</dimen>
-    <dimen name="elevation">2dp</dimen>
+    <dimen name="elevation">1dp</dimen>
     <dimen name="status_bar_height">24dp</dimen>
     <dimen name="avatar">80dp</dimen>
 

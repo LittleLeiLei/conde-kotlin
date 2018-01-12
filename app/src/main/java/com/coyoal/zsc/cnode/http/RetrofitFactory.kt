@@ -44,6 +44,9 @@ class RetrofitFactory private constructor(): Interceptor {
 
     fun <T> create(clazz: Class<T>): T = mRetrofit.create(clazz)
 
+    /**
+     * 拦截器
+     */
     override fun intercept(chain: Interceptor.Chain?): Response {
         var request = chain!!.request()
         if (!NetworkUtils.isAvailable()) {

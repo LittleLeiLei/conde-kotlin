@@ -17,8 +17,8 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
     private var rootView: View? = null
 
     @Suppress("UNCHECKED_CAST")
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(getLayout(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        rootView = inflater.inflate(getLayout(), container, false)
         mPresenter = initPresenter()
         mPresenter?.attach(this as V)
         initViews(rootView)

@@ -3,6 +3,7 @@ package com.coyoal.zsc.cnode.views.activity
 import com.coyoal.zsc.cnode.R
 import com.coyoal.zsc.cnode.constract.TopicDetailContract
 import com.coyoal.zsc.cnode.entity.Topic
+import com.coyoal.zsc.cnode.image.ImageLoaderWrapper
 import com.coyoal.zsc.cnode.presenter.TopicDetailPresenter
 import com.coyoal.zsc.cnode.views.base.BaseActivity
 import com.zzhoujay.richtext.RichText
@@ -35,17 +36,21 @@ class TopicDetailActivity : BaseActivity<TopicDetailContract.View, TopicDetailPr
             val alphaOfTitleCollapse = (Math.abs(verticalOffset).toFloat() / appBarLayout.totalScrollRange - 0.8) * 5
             tv_title.alpha = alphaOfTitleCollapse.toFloat()
         }
-        iv_back.setOnClickListener { _ -> finish() }
+        iv_back.setOnClickListener { finish() }
     }
 
     override fun initPresenter(): TopicDetailPresenter? {
         return TopicDetailPresenter()
     }
 
+    /**
+     * 设置主题详情
+     */
     override fun setTopic(topic: Topic) {
         tv_author.text = topic.author?.loginname
         tv_title_expand.text = topic.title
         tv_title.text = topic.title
         RichText.from(topic.content).into(tv_topic_content)
+        ImageLoaderWrapper.instance.load(this, iv_avatar, topic.author?.avatar_url)
     }
 }
