@@ -1,7 +1,7 @@
 package com.coyoal.zsc.cnode.model
 
 import com.coyoal.zsc.cnode.api.TopicApi
-import com.coyoal.zsc.cnode.constract.TopicListContract
+import com.coyoal.zsc.cnode.contract.TopicListContract
 import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.http.RetrofitFactory
 import com.coyoal.zsc.cnode.http.RxSchedulers
@@ -17,7 +17,8 @@ class TopicListModel : TopicListContract.Model {
         val params = mapOf<String, String>(
                 "tab" to tab,
                 "page" to page.toString(),
-                "limit" to limit.toString()
+                "limit" to limit.toString(),
+                "mdrender" to "true"
         )
         val observable = RetrofitFactory.instance.create(TopicApi::class.java).getArticleList(params)
         observable.compose(RxSchedulers.compose()).subscribe(observer)

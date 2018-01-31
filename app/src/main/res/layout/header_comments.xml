@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_middle">
+
+        <TextView
+            android:id="@+id/tv_topic_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_primary" />
+
+        <LinearLayout
+            android:id="@+id/layout_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_topic_title"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"
+                android:src="@mipmap/ic_personal" />
+
+            <TextView
+                android:id="@+id/tv_topic_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_tiny"
+                android:textColor="@color/text_color_light"
+                android:textSize="@dimen/text_size_tiny" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:background="@color/background"
+        android:layout_height="@dimen/margin_middle"
+        android:layout_width="match_parent" />
+
+</LinearLayout>

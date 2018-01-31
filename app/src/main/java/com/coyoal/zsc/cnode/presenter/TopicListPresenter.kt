@@ -1,6 +1,6 @@
 package com.coyoal.zsc.cnode.presenter
 
-import com.coyoal.zsc.cnode.constract.TopicListContract
+import com.coyoal.zsc.cnode.contract.TopicListContract
 import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.http.SimpleObserver
 import com.coyoal.zsc.cnode.model.TopicListModel

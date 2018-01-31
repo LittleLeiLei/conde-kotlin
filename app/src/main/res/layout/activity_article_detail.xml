@@ -23,7 +23,7 @@
                 android:layout_height="250dp">
 
                 <com.coyoal.zsc.cnode.views.custom.CircleImageView
-                    android:id="@+id/iv_avatar"
+                    android:id="@+id/iv_comment_avatar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_large"
@@ -35,8 +35,8 @@
                     android:id="@+id/tv_title_expand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/iv_avatar"
-                    android:layout_toRightOf="@id/iv_avatar"
+                    android:layout_alignTop="@id/iv_comment_avatar"
+                    android:layout_toRightOf="@id/iv_comment_avatar"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_size_middle"
                     android:layout_marginRight="@dimen/margin_large"
@@ -49,12 +49,12 @@
                     android:layout_height="@dimen/icon_middle"
                     android:tint="@android:color/white"
                     android:layout_below="@id/tv_title_expand"
-                    android:layout_toRightOf="@id/iv_avatar"
+                    android:layout_toRightOf="@id/iv_comment_avatar"
                     android:layout_marginTop="@dimen/margin_middle"
                     android:src="@mipmap/ic_personal" />
 
                 <TextView
-                    android:id="@+id/tv_author"
+                    android:id="@+id/tv_comment_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_title_expand"
@@ -178,7 +178,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/iv_back"
+                        android:id="@+id/iv_toolbar_left"
                         android:layout_width="@dimen/icon_middle"
                         android:layout_height="@dimen/icon_middle"
                         android:layout_centerVertical="true"
@@ -186,12 +186,12 @@
                         android:tint="@android:color/white" />
 
                     <TextView
-                        android:id="@+id/tv_title"
+                        android:id="@+id/tv_toolbar_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/margin_middle"
-                        android:layout_toRightOf="@id/iv_back"
+                        android:layout_toRightOf="@id/iv_toolbar_left"
                         android:ellipsize="marquee"
                         android:focusable="true"
                         android:focusableInTouchMode="true"

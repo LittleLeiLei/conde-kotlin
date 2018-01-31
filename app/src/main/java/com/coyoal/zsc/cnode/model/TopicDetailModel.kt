@@ -1,7 +1,7 @@
 package com.coyoal.zsc.cnode.model
 
 import com.coyoal.zsc.cnode.api.TopicApi
-import com.coyoal.zsc.cnode.constract.TopicDetailContract
+import com.coyoal.zsc.cnode.contract.TopicDetailContract
 import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.http.RetrofitFactory
 import com.coyoal.zsc.cnode.http.RxSchedulers

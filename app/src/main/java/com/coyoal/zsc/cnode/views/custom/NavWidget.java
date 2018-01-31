@@ -1,6 +1,8 @@
 package com.coyoal.zsc.cnode.views.custom;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -85,15 +87,26 @@ public class NavWidget extends TabWidget {
 
         ImageView tabIcon;
         TextView tabName;
+        Drawable ripple;
 
         public Tab(Context context) {
             super(context);
+            resolveRipple();
             initView();
         }
 
         public Tab(Context context, @Nullable AttributeSet attrs) {
             super(context, attrs);
+            resolveRipple();
             initView();
+        }
+
+        private void resolveRipple() {
+            TypedValue typedValue = new TypedValue();
+            getContext().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
+            int[] attribute = new int[]{android.R.attr.selectableItemBackground};
+            TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(typedValue.resourceId, attribute);
+            ripple = typedArray.getDrawable(0);
         }
 
         private void initView() {
@@ -104,6 +117,7 @@ public class NavWidget extends TabWidget {
             tabIcon.setLayoutParams(new LayoutParams(dip2px(20), dip2px(20)));
             tabName = new TextView(getContext());
             tabName.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            setBackground(ripple);
             addView(tabIcon);
             addView(tabName);
         }

@@ -1,7 +1,9 @@
 package com.coyoal.zsc.cnode.views.activity
 
+import android.content.Intent
+import android.os.Bundle
 import com.coyoal.zsc.cnode.R
-import com.coyoal.zsc.cnode.constract.TopicDetailContract
+import com.coyoal.zsc.cnode.contract.TopicDetailContract
 import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.image.ImageLoaderWrapper
 import com.coyoal.zsc.cnode.presenter.TopicDetailPresenter
@@ -20,26 +22,29 @@ class TopicDetailActivity : BaseActivity<TopicDetailContract.View, TopicDetailPr
     }
 
     override fun initViews() {
-        tv_read_count.text = "99"
-        tv_share_count.text = "99"
-        tv_comment_count.text = "99"
-        tv_collect_count.text = "99"
+        tv_read_count.text = "39"
+        tv_share_count.text = "13"
+        tv_comment_count.text = "128"
+        tv_collect_count.text = "225"
     }
 
     override fun initData() {
         val topicId = intent.extras.getString("topicId")
-        mPresenter?.loadTopic(topicId)
+        mPresenter.loadTopic(topicId)
     }
 
     override fun initEvents() {
         abl_bar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
             val alphaOfTitleCollapse = (Math.abs(verticalOffset).toFloat() / appBarLayout.totalScrollRange - 0.8) * 5
-            tv_title.alpha = alphaOfTitleCollapse.toFloat()
+            tv_toolbar_title.alpha = alphaOfTitleCollapse.toFloat()
         }
-        iv_back.setOnClickListener { finish() }
+        iv_toolbar_left.setOnClickListener { finish() }
+        tv_comment_count.setOnClickListener {
+            mPresenter.toComments()
+        }
     }
 
-    override fun initPresenter(): TopicDetailPresenter? {
+    override fun initPresenter(): TopicDetailPresenter {
         return TopicDetailPresenter()
     }
 
@@ -47,10 +52,23 @@ class TopicDetailActivity : BaseActivity<TopicDetailContract.View, TopicDetailPr
      * 设置主题详情
      */
     override fun setTopic(topic: Topic) {
-        tv_author.text = topic.author?.loginname
+        tv_comment_author.text = topic.author?.loginname
         tv_title_expand.text = topic.title
-        tv_title.text = topic.title
+        tv_toolbar_title.text = topic.title
+        RichText.initCacheDir(this)
         RichText.from(topic.content).into(tv_topic_content)
-        ImageLoaderWrapper.instance.load(this, iv_avatar, topic.author?.avatar_url)
+        ImageLoaderWrapper.instance.load(this, iv_comment_avatar, topic.author?.avatar_url)
     }
+
+    /**
+     * 查看评论
+     */
+    override fun toComments(topic: Topic) {
+        val intent = Intent(this, TopicCommentsActivity::class.java)
+        val bundle = Bundle()
+        bundle.putParcelable("topic", topic)
+        intent.putExtras(bundle)
+        startActivity(intent)
+    }
+
 }

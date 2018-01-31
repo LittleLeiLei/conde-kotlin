@@ -24,7 +24,7 @@ class HomeFragment: Fragment() {
     }
 
     private fun initView(view: View) {
-        view.tv_title.text = "cnode中文社区"
+        view.tv_toolbar_title.text = "cnode中文社区"
         mTopicPagerAdapter = TopicPagerAdapter(childFragmentManager)
         view.vp_topics.adapter = mTopicPagerAdapter
         view.vp_topics.offscreenPageLimit = mTopicPagerAdapter.count - 1

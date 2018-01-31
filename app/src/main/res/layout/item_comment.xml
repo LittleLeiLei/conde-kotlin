@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/padding_middle"
+    android:paddingRight="@dimen/padding_middle"
+    android:paddingTop="@dimen/padding_middle">
+
+    <com.coyoal.zsc.cnode.views.custom.CircleImageView
+        android:id="@+id/iv_comment_avatar"
+        android:layout_width="@dimen/icon_huge"
+        android:layout_height="@dimen/icon_huge"
+        app:civ_border_color="@color/divider"
+        app:civ_border_width="1dp" />
+
+    <TextView
+        android:id="@+id/tv_comment_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toEndOf="@+id/iv_comment_avatar"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/tv_comment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/text_color_light"
+        android:textSize="@dimen/text_size_tiny"
+        app:layout_constraintStart_toEndOf="@+id/iv_comment_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_author" />
+
+    <TextView
+        android:id="@+id/tv_comment_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="content"
+        app:layout_constraintStart_toEndOf="@+id/iv_comment_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/tv_comment_date" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider"
+        app:layout_constraintBottom_toBottomOf="@id/tv_comment_content"
+        android:layout_marginTop="@dimen/margin_middle"/>
+
+</android.support.constraint.ConstraintLayout>

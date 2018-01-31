@@ -1,4 +1,4 @@
-package com.coyoal.zsc.cnode.constract
+package com.coyoal.zsc.cnode.contract
 
 import android.support.annotation.NonNull
 import com.coyoal.zsc.cnode.entity.Topic

@@ -13,14 +13,14 @@ import com.coyoal.zsc.cnode.presenter.BasePresenter
  * Created by Administrator on 2017/11/5.
  */
 abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
-    protected var mPresenter: T? = null
+    protected lateinit var mPresenter: T
     private var rootView: View? = null
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(getLayout(), container, false)
         mPresenter = initPresenter()
-        mPresenter?.attach(this as V)
+        mPresenter.attach(this as V)
         initViews(rootView)
         initData()
         initEvents()
@@ -29,7 +29,7 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mPresenter?.detach()
+        mPresenter.detach()
     }
 
     @LayoutRes
@@ -41,5 +41,5 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
 
     abstract fun initEvents()
 
-    abstract fun initPresenter(): T?
+    abstract fun initPresenter(): T
 }

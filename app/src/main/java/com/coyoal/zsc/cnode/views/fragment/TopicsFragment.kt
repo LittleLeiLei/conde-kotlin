@@ -3,7 +3,7 @@ package com.coyoal.zsc.cnode.views.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.coyoal.zsc.cnode.constract.TopicListContract
+import com.coyoal.zsc.cnode.contract.TopicListContract
 import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.presenter.TopicListPresenter
 import com.coyoal.zsc.cnode.views.activity.TopicDetailActivity
@@ -22,7 +22,7 @@ class TopicsFragment: BaseListFragment<Topic, TopicListContract.View, TopicListP
 
     override fun initData() {
         val tab = arguments?.getString("tab_key") as String
-        mPresenter?.loadTopics(tab, 1, 10)
+        mPresenter.loadTopics(tab, 1, 10)
     }
 
     override fun initPresenter(): TopicListPresenter {
@@ -38,6 +38,6 @@ class TopicsFragment: BaseListFragment<Topic, TopicListContract.View, TopicListP
     }
 
     override fun setTopics(topics: List<Topic>) {
-        mAdapter?.data = topics
+        mAdapter.data = topics
     }
 }

@@ -17,9 +17,9 @@ class TopicAdapter: BaseRecyclerAdapter<Topic>() {
     }
 
     override fun bindView(holder: RecyclerView.ViewHolder?, bean: Topic, pos: Int) {
-        holder!!.itemView.tv_title.text = bean.title
+        holder!!.itemView.tv_toolbar_title.text = bean.title
         holder.itemView.tv_created_at.text = TimeUtils.isodate2String(bean.create_at)
         holder.itemView.tv_like_count.text = bean.reply_count.toString()
-        holder.itemView.tv_author.text = bean.author?.loginname ?: "佚名"
+        holder.itemView.tv_comment_author.text = bean.author?.loginname ?: "佚名"
     }
 }

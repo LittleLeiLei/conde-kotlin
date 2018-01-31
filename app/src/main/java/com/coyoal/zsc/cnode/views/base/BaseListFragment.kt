@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_list.view.*
  */
 abstract class BaseListFragment<T, V, P: BasePresenter<V>>: BaseFragment<V, P>(), BaseRecyclerAdapter.OnItemClickListener<T> {
 
-    protected var mAdapter: BaseRecyclerAdapter<T>? = null
+    protected lateinit var mAdapter: BaseRecyclerAdapter<T>
 
     override fun getLayout(): Int {
         return R.layout.fragment_list
@@ -26,7 +26,7 @@ abstract class BaseListFragment<T, V, P: BasePresenter<V>>: BaseFragment<V, P>()
     }
 
     override fun initEvents() {
-        mAdapter?.setOnItemClickListener(this)
+        mAdapter.setOnItemClickListener(this)
     }
 
     protected abstract fun initAdapter()

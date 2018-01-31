@@ -14,7 +14,7 @@
     android:elevation="@dimen/elevation">
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/text_color_primary"
@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/tv_author"
+        android:id="@+id/tv_comment_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

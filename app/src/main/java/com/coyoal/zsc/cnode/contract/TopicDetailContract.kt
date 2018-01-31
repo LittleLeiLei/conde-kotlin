@@ -1,4 +1,4 @@
-package com.coyoal.zsc.cnode.constract
+package com.coyoal.zsc.cnode.contract
 
 import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.http.SimpleObserver
@@ -15,9 +15,13 @@ class TopicDetailContract {
 
     interface View {
         fun setTopic(topic: Topic)
+
+        fun toComments(topic: Topic)
     }
 
     abstract class Presenter<V>: BasePresenter<V>() {
         abstract fun loadTopic(topicId: String)
+
+        abstract fun toComments()
     }
 }

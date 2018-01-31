@@ -11,14 +11,14 @@ import com.coyoal.zsc.cnode.presenter.BasePresenter
  */
 abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
 
-    protected var mPresenter: T? = null
+    protected lateinit var mPresenter: T
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayout())
         mPresenter = initPresenter()
-        mPresenter?.attach(this as V)
+        mPresenter.attach(this as V)
 
         initData()
         initViews()
@@ -27,17 +27,17 @@ abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter?.detach()
+        mPresenter.detach()
     }
 
     @LayoutRes
     abstract fun getLayout(): Int
 
-    abstract fun initViews(): Unit
-
     abstract fun initData(): Unit
+
+    abstract fun initViews(): Unit
 
     abstract fun initEvents(): Unit
 
-    abstract fun initPresenter(): T?
+    abstract fun initPresenter(): T
 }
