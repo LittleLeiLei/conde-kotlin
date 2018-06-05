@@ -8,6 +8,7 @@ import com.coyoal.zsc.cnode.entity.Topic
 import com.coyoal.zsc.cnode.image.ImageLoaderWrapper
 import com.coyoal.zsc.cnode.presenter.TopicDetailPresenter
 import com.coyoal.zsc.cnode.views.base.BaseActivity
+import com.orhanobut.logger.Logger
 import com.zzhoujay.richtext.RichText
 import kotlinx.android.synthetic.main.activity_article_detail.*
 
@@ -35,11 +36,12 @@ class TopicDetailActivity : BaseActivity<TopicDetailContract.View, TopicDetailPr
 
     override fun initEvents() {
         abl_bar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val alphaOfTitleCollapse = (Math.abs(verticalOffset).toFloat() / appBarLayout.totalScrollRange - 0.8) * 5
-            tv_toolbar_title.alpha = alphaOfTitleCollapse.toFloat()
+            val alphaOfTitleCollapse = Math.abs(verticalOffset).toFloat() / appBarLayout.totalScrollRange
+            tv_toolbar_title.alpha = alphaOfTitleCollapse
+            rl_info.alpha = 1.0f - alphaOfTitleCollapse
         }
         iv_toolbar_left.setOnClickListener { finish() }
-        tv_comment_count.setOnClickListener {
+        ll_comment.setOnClickListener {
             mPresenter.toComments()
         }
     }

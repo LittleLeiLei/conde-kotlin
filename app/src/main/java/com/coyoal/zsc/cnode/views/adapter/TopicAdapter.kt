@@ -24,11 +24,11 @@ class TopicAdapter: BaseRecyclerAdapter<Topic>() {
         holder.itemView.tv_title.text = bean.title
         holder.itemView.tv_like_count.text = bean.reply_count.toString()
         holder.itemView.tv_author.text = bean.author?.loginname ?: "佚名"
-        holder.itemView.tv_content.text = deleteHtml(bean.content)
+        holder.itemView.tv_content.text = summarize(bean.content)
         ImageLoaderWrapper.instance.load(holder.itemView.context, holder.itemView.iv_avatar, bean.author?.avatar_url)
     }
 
-    fun deleteHtml(content: String): String {
+    fun summarize(content: String): String {
         return try {
             val regex = "<[^>]+>"
             val pattern: Pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE)
