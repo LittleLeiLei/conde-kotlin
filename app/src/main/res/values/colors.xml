@@ -9,4 +9,5 @@
 
     <color name="background">#efefef</color>
     <color name="divider">#cccccc</color>
+    <color name="color_bbbbbb">#bbbbbb</color>
 </resources>

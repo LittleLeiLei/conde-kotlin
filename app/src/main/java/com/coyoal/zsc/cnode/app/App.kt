@@ -1,6 +1,7 @@
 package com.coyoal.zsc.cnode.app
 
 import android.app.Application
+import com.mcxiaoke.packer.helper.PackerNg
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 
@@ -10,7 +11,7 @@ import com.orhanobut.logger.Logger
  */
 class App: Application() {
 
-    companion object Factory {
+    companion object {
         private var app: Application? = null
         fun get(): Application? = app
     }

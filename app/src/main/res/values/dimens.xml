@@ -26,5 +26,5 @@
     <dimen name="icon_small">16dp</dimen>
     <dimen name="icon_middle">20dp</dimen>
     <dimen name="icon_large">24dp</dimen>
-    <dimen name="icon_huge">40dp</dimen>
+    <dimen name="icon_huge">35dp</dimen>
 </resources>
